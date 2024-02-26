@@ -1,0 +1,23 @@
+.card {
+  display: flex;
+  background-color: var(--main-white);
+  border-radius: 25px 25px 25px 25px;
+  box-shadow: 18px 12px 20px 0px rgba(0, 0, 0, 0.1);
+  width: 650px;
+  color: #3c3c3c;
+}
+
+.card-title{
+  font-family: var(--roboto-font);
+  font-weight: 100;
+}
+
+.card-paragraph-quote{
+  font-family: var(--roboto-font);
+  font-weight: 100;
+  color: var(--green-dark-primary);
+}
+.card-image{
+  max-height: 150px;
+  max-width: 150px;
+}
