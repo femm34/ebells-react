@@ -1,0 +1,131 @@
+body {
+  margin: 0;
+}
+
+.container {
+  color: black;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+}
+
+.login p {
+  font-weight: 100;
+}
+
+.login {
+
+  border-radius: 12px;
+  padding: 30px;
+  background-color: #f1f1f1;
+  margin: 30px;
+
+}
+
+.icons {
+  text-align: center;
+
+
+}
+
+.iconos {
+  margin: 20px;
+}
+
+.login button {
+  width: 100%;
+  height: 60px;
+  background-color: #7dc1d4;
+  border: none;
+  border-radius: 12px;
+  font-size: larger;
+  margin-bottom: 12px;
+}
+
+hr {
+  width: 80%;
+  color: #f1f1f1;
+}
+
+.container h1 {
+  text-align: left;
+  font-weight: 100;
+}
+
+.other {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  margin-left: 90%;
+}
+
+.other p {
+  margin-right: 12px;
+}
+
+
+.forgot {
+  text-align: right;
+}
+
+.container input {
+  border: none;
+  border-bottom: 2px solid silver;
+  background-color: #f1f1f1;
+  color: black;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.img_container {
+  grid-column-start: 1;
+  background-image: url('../assets/campana2.jpg');
+  height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+
+
+}
+
+.also {
+  text-align: center;
+  font-weight: 100;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.check input {
+  width: 20px;
+  margin: 0;
+  background-color: #f1f1f1;
+}
+
+.check label {
+  margin-left: 5px;
+  font-weight: 100;
+
+}
+
+@media (max-width:800px) {
+  .img_container {
+    background-image: url();
+  }
+
+  .container {
+    grid-template-columns: auto;
+    align-items: center;
+  }
+
+  .login {
+    grid-column-start: 2;
+  }
+
+}

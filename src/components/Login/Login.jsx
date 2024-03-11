@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.Styled.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import authService from "../../api/auth/authService";
 export default function Login() {
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
+
+  const { username, password } = formData;
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleFields = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await authService.login(formData);
+      console.log(response.data.access_token);
+    } catch (error) {
+      if (error.response) {
+        console.error("Error response:", error.response.data);
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+      } else {
+        console.error("Error setting up the request:", error.message);
+      }
+    }
+  };
+
   return (
     <div className="container">
       <div className="login">
@@ -15,12 +43,29 @@ export default function Login() {
         <p>
           Welcome, please fill username and password to enter into your account
         </p>
-        <form action="">
-          <input type="text" placeholder="Username" />
-          <input type="password" placeholder="Password" />
+        <form onSubmit={handleFields}>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={username}
+            placeholder="Username"
+            onChange={handleChange}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            placeholder="Password"
+            onChange={handleChange}
+          />
+
+          <button type="submit">Login</button>
         </form>
         <p className="forgot">Forgot your password?</p>
-        <button>Login</button>
         <hr />
         <p className="also">Also you can login with:</p>
         <div className="icons">

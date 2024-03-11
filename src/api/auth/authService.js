@@ -2,10 +2,10 @@ import api from "../../services/api";
 
 const authService = {
   login: (credentials) => {
-    return api.post("/auth/login", credentials).then((response) => {
-      const { token } = response.data;
-      if (token) {
-        localStorage.setItem("token", token);
+    return api.post("/auth", credentials).then((response) => {
+      const data = response.data;
+      if (data.access_token) {
+        localStorage.setItem("token", data.access_token);
       }
       return response;
     });
