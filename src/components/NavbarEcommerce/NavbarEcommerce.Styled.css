@@ -1,0 +1,39 @@
+.navbar {
+  color: black;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  background-color: white;
+  padding: 12px;
+
+}
+
+.navbar h1 {
+  font-size: large;
+}
+
+.search {
+  grid-column: 2;
+  text-align: center;
+}
+
+input {
+  border: 1px solid silver;
+  background-color: transparent;
+  width: 600px;
+  margin: 10px 20px;
+  height: 40px;
+  border-radius: 15px;
+
+
+
+
+}
+
+.botones {
+  grid-column: 3;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  justify-content: space-around;
+
+}
