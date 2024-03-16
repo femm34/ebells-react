@@ -23,7 +23,7 @@ export default function ArticleCard(props) {
 
         <div className="even-elements">
           <BuyButton title={"Comprar ahora"} />
-          <i class="fa-solid fa-cart-shopping"></i>
+          <i className="fa-solid fa-cart-shopping"></i>
         </div>
 
         <div className="even-elements">
@@ -31,7 +31,7 @@ export default function ArticleCard(props) {
             Envios a toda la republica mexicana
           </p>
 
-          <i class="fa-solid fa-truck-fast"></i>
+          <i className="fa-solid fa-truck-fast"></i>
         </div>
       </div>
     </div>

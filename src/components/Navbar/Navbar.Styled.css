@@ -1,14 +1,39 @@
 .navbar {
-  background-color: white;
+  z-index: 1000;
+  /* background-color: white; */
   color: black;
   display: flex;
   justify-content: center;
-  padding: 12px;
-
+  padding: 5px;
+  position: fixed;
+  width: 100%;
 }
 
 .navbar h2 {
+
   font-size: medium;
   font-weight: 300;
   margin: 12px;
+}
+
+.link-nav {
+  color: #3c3c3c;
+}
+
+.a {
+  color: red;
+  background: rgb(203, 26, 26);
+  /* Cambia a rojo */
+}
+
+/* Cambia el color del enlace al pasar el mouse sobre él */
+.a:hover {
+  color: rgb(146, 146, 212);
+  /* Cambia a azul */
+}
+
+/* Cambia el color del enlace cuando se ha visitado */
+.a:visited {
+  color: purple;
+  /* Cambia a púrpura */
 }

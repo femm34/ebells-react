@@ -9,7 +9,7 @@ function OneProduct() {
         src="https://revistapuebla.com/wp-content/uploads/2022/08/Campana.jpg"
         alt="ola"
       />
-      <i class="fa-solid fa-cart-shopping"></i>
+      <i className="fa-solid fa-cart-shopping"></i>
       <div className="content">
         <h1 className="title">Campana</h1>
         <p className="product_content">

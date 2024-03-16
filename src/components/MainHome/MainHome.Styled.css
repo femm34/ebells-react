@@ -1,0 +1,70 @@
+.home-body {
+  margin: 0;
+  width: 100% !important;
+  position: relative;
+}
+
+.container-background {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  background-image: url('/src/assets/images/background/mainBackground.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  height: 80dvh;
+}
+
+.title {
+  width: 400px;
+  padding: 0 50px 50px 50px;
+  display: flex;
+  color: white;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+
+.title h1 {
+  font-size: 60px;
+  font-weight: 700;
+  margin: 2px;
+}
+
+.title p {
+  text-align: justify;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.btn-group {
+  display: flex;
+}
+
+.custom-button {
+  font-weight: 700 !important;
+  font-family: var(--roboto-font);
+  font-size: larger;
+  font-weight: 300;
+  height: 50px;
+  border: 2px solid white;
+  background-color: transparent;
+  margin-right: 10px;
+}
+
+.custom-button-cotizar {
+  border: 2px solid white;
+  background-color: white;
+  font-size: larger;
+  font-weight: 300;
+  height: 50px;
+  font-size: small;
+}
+
+.svg-wave {
+  position: absolute;
+  z-index: 1;
+  bottom: -3em;
+  left: 0;
+  width: 100%;
+}

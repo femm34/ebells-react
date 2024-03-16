@@ -36,8 +36,12 @@ export default function Login() {
     <div className="container">
       <div className="login">
         <div className="other">
-          <FontAwesomeIcon icon={faArrowLeft} size="2x" color="#d5d5d5" />
-          <a>Register</a>
+          <div className="other-icon">
+            <FontAwesomeIcon icon={faArrowLeft} size="2x" color="#d5d5d5" />
+          </div>
+          <div className="other-register">
+            <a>Register</a>
+          </div>
         </div>
         <h1>Login</h1>
         <p>
@@ -46,6 +50,7 @@ export default function Login() {
         <form onSubmit={handleFields}>
           <label htmlFor="username">Username</label>
           <input
+            className="border-2 border-rose-500"
             type="text"
             id="username"
             name="username"

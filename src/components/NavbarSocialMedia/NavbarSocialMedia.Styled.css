@@ -1,0 +1,14 @@
+.navbar-social-media {
+  /* background-color: #3f3f3f; */
+  background-color: #260B01;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.navbar-social-media h2 {
+  font-size: medium;
+  font-weight: 300;
+  margin: 2px 5px 2px 5px;
+}
