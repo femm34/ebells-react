@@ -10,7 +10,7 @@ export default function MainHome() {
         <p>
           Descubre la magia de las campanas en Arca de la Alianza. Encuentra la
           perfecta para ti y explora servicios relacionados que añaden encanto a
-          tu espacio
+          tu espacio.
         </p>
         <div className="btn-group">
           <Button

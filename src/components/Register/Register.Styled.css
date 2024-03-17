@@ -69,13 +69,13 @@ hr {
 }
 
 .container input {
-  border: none;
+  /* border: none;
   border-bottom: 2px solid silver;
   background-color: #f1f1f1;
   color: black;
   height: 40px;
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 12px; */
 }
 
 .img_container {

@@ -99,6 +99,8 @@ export default function Introduction() {
           en una experiencia memorable.
         </p>
       </div>
+
+      <div className="works-done"></div>
     </div>
   );
 }

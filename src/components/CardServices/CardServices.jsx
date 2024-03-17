@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
+import { Tabs, Tab } from "@nextui-org/react";
 import servicesService from "../../api/services/servicesService";
 
 export default function CardServices() {
@@ -11,23 +12,22 @@ export default function CardServices() {
         const services = await servicesService.getServices();
         console.log(services.data);
         const cardServices = services.data.map((e) => (
-          <Card key={e.id} className="py-4">
-            <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-              <p className="text-tiny uppercase font-bold">Daily Mix</p>
-              <small className="text-default-500">
-                {e.service_description}
-              </small>
-              <h4 className="font-bold text-large">{e.service_name}</h4>
-            </CardHeader>
-            <CardBody className="overflow-visible py-2">
-              <Image
-                alt="Card background"
-                className="object-cover rounded-xl"
-                src="/images/hero-card-complete.jpeg"
-                width={270}
-              />
-            </CardBody>
-          </Card>
+          <div className="flex w-full flex-col">
+            <Tabs aria-label="Options">
+              <Tab key="servicio" title="  ">
+                <Card>
+                  <CardBody>
+                    <h1 className="font-bold">{e.service_name}</h1>
+                  </CardBody>
+                </Card>
+              </Tab>
+              <Tab key="descripction" title="Descripción">
+                <Card>
+                  <CardBody>{e.service_description}</CardBody>
+                </Card>
+              </Tab>
+            </Tabs>
+          </div>
         ));
         setAllCardServices(cardServices);
       } catch (error) {

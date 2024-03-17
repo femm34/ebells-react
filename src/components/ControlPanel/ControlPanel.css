@@ -1,0 +1,6 @@
+.control-panel-main-container {
+  margin: 0 auto !important;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}

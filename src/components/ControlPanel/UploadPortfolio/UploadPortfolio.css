@@ -1,0 +1,24 @@
+.upload-portfolio-text {
+  font-weight: 300;
+  display: inline-block !important;
+}
+
+.upload-portfolio {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.upload-portfolio-title {
+  font-weight: 500 !important;
+}
+
+.upload-portfolio-card {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+
+.upload-portfolio-button {
+  background-color: aqua !;
+}
