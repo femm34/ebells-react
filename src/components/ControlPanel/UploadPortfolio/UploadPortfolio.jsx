@@ -2,6 +2,7 @@ import { PhotoIcon } from "@heroicons/react/24/solid";
 import "./UploadPortfolio.css";
 import { AddNoteIcon } from "./AddNoteIcon.jsx";
 import { CopyDocumentIcon } from "./CopyDocumentIcon.jsx";
+import portfolioService from "../../../api/portfolio/portfolioService.js";
 import {
   Dropdown,
   DropdownTrigger,
@@ -18,10 +19,78 @@ import {
   ModalHeader,
   useDisclosure,
 } from "@nextui-org/react";
-import React from "react";
+import React, { useState } from "react";
 
 export default function UploadPortfolio() {
-  const sendPortfolioData = () => {};
+  const [portfolioData, setPortfolioData] = useState({
+    work_name: "",
+    image: "",
+  });
+
+  const handleChange = (e) => {
+    if (e.target.name === "image") {
+      setPortfolioData({
+        ...portfolioData,
+        image: e.target.files[0], // Almacena el archivo
+        imageUrl: URL.createObjectURL(e.target.files[0]), // Almacena una URL temporal para mostrar la imagen previa
+      });
+    } else {
+      setPortfolioData({ ...portfolioData, [e.target.name]: e.target.value });
+    }
+    console.log(portfolioData);
+  };
+  const sendPortfolioData = async () => {
+    try {
+      // Subir el archivo al servidor
+      const formData = new FormData();
+      formData.append("image", portfolioData.image);
+      formData.append("work_name", portfolioData.work_name);
+      // Envía la solicitud de carga de archivos
+      // alert(formData.keys());
+      for (const pair of formData.entries()) {
+        const [key, value] = pair;
+        alert(`${key}: ${value}`);
+      }
+
+      const uploadResponse = await portfolioService.createPortfolio(formData);
+      console.log(uploadResponse);
+      return;
+      // Una vez que el archivo se haya subido correctamente, enviar el resto de los datos
+      const portfolioDataToSend = {
+        ...portfolioData,
+        imageUrl: uploadResponse.data.imageUrl, // Usar la URL del archivo subido como referencia
+      };
+      // Envía los datos de portafolio al servidor
+      const response = await portfolioService.createPortfolio(
+        portfolioDataToSend
+      );
+      console.log(response);
+    } catch (error) {
+      // Maneja los errores
+      if (error.response) {
+        console.error("Error response:", error.response.data);
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+      } else {
+        console.error("Error setting up the request:", error.message);
+      }
+    }
+  };
+
+  // const sendPortfolioData = async () => {
+  //   try {
+  //     const response = await portfolioService.createPortfolio(portfolioData);
+  //     console.log(response);
+  //   } catch (error) {
+  //     if (error.response) {
+  //       console.error("Error response:", error.response.data);
+  //     } else if (error.request) {
+  //       console.error("No response received:", error.request);
+  //     } else {
+  //       console.error("Error setting up the request:", error.message);
+  //     }
+  //   }
+  // };
 
   const iconClasses =
     "text-xl text-default-500 pointer-events-none flex-shrink-0";
@@ -81,21 +150,24 @@ export default function UploadPortfolio() {
                   </ModalHeader>
                   <ModalBody className="">
                     <div className="">
-                      <label
-                        htmlFor="last-name"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
-                        Nombre del trabajo
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          type="text"
-                          name="last-name"
-                          id="last-name"
-                          autoComplete="family-name"
-                          className="block m-0 w-full rounded-md border-0 py-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        />
-                      </div>
+                      <form action="">
+                        <label
+                          htmlFor="last-name"
+                          className="block text-sm font-medium leading-6 text-gray-900"
+                        >
+                          Nombre del trabajo
+                        </label>
+                        <div className="mt-2">
+                          <input
+                            name="work_name"
+                            onChange={handleChange}
+                            type="text"
+                            id="work_name"
+                            autoComplete="family-name"
+                            className="block m-0 w-full rounded-md border-0 py-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          />
+                        </div>
+                      </form>
                     </div>
 
                     <div className="col-span-full">
@@ -118,8 +190,9 @@ export default function UploadPortfolio() {
                             >
                               <span>Carga un archivo</span>
                               <input
+                                onChange={handleChange}
                                 id="file-upload"
-                                name="file-upload"
+                                name="image"
                                 type="file"
                                 className="sr-only"
                               />
@@ -137,7 +210,7 @@ export default function UploadPortfolio() {
                     <Button color="danger" variant="flat" onPress={onClose}>
                       Close
                     </Button>
-                    <Button color="default" onPress={onClose}>
+                    <Button color="default" onPress={sendPortfolioData}>
                       Guardar
                     </Button>
                   </ModalFooter>
