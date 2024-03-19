@@ -31,7 +31,7 @@ export default function UploadPortfolio() {
     if (e.target.name === "image") {
       setPortfolioData({
         ...portfolioData,
-        image: e.target.files[0], // Almacena el archivo
+        image: e.target.files[0],
         imageUrl: URL.createObjectURL(e.target.files[0]), // Almacena una URL temporal para mostrar la imagen previa
       });
     } else {
@@ -41,32 +41,13 @@ export default function UploadPortfolio() {
   };
   const sendPortfolioData = async () => {
     try {
-      // Subir el archivo al servidor
       const formData = new FormData();
       formData.append("image", portfolioData.image);
       formData.append("work_name", portfolioData.work_name);
-      // Envía la solicitud de carga de archivos
-      // alert(formData.keys());
-      for (const pair of formData.entries()) {
-        const [key, value] = pair;
-        alert(`${key}: ${value}`);
-      }
-
       const uploadResponse = await portfolioService.createPortfolio(formData);
       console.log(uploadResponse);
       return;
-      // Una vez que el archivo se haya subido correctamente, enviar el resto de los datos
-      const portfolioDataToSend = {
-        ...portfolioData,
-        imageUrl: uploadResponse.data.imageUrl, // Usar la URL del archivo subido como referencia
-      };
-      // Envía los datos de portafolio al servidor
-      const response = await portfolioService.createPortfolio(
-        portfolioDataToSend
-      );
-      console.log(response);
     } catch (error) {
-      // Maneja los errores
       if (error.response) {
         console.error("Error response:", error.response.data);
       } else if (error.request) {
@@ -76,21 +57,6 @@ export default function UploadPortfolio() {
       }
     }
   };
-
-  // const sendPortfolioData = async () => {
-  //   try {
-  //     const response = await portfolioService.createPortfolio(portfolioData);
-  //     console.log(response);
-  //   } catch (error) {
-  //     if (error.response) {
-  //       console.error("Error response:", error.response.data);
-  //     } else if (error.request) {
-  //       console.error("No response received:", error.request);
-  //     } else {
-  //       console.error("Error setting up the request:", error.message);
-  //     }
-  //   }
-  // };
 
   const iconClasses =
     "text-xl text-default-500 pointer-events-none flex-shrink-0";
@@ -179,10 +145,19 @@ export default function UploadPortfolio() {
                       </label>
                       <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                         <div className="text-center">
-                          <PhotoIcon
-                            className="mx-auto h-12 w-12 text-gray-300"
-                            aria-hidden="true"
-                          />
+                          {portfolioData.imageUrl != "" ? (
+                            <img
+                              src={portfolioData.imageUrl}
+                              alt=""
+                              srcSet=""
+                            />
+                          ) : (
+                            <PhotoIcon
+                              className="mx-auto h-12 w-12 text-gray-300"
+                              aria-hidden="true"
+                            />
+                          )}
+
                           <div className="mt-4 flex text-sm leading-6 text-gray-600">
                             <label
                               htmlFor="file-upload"
