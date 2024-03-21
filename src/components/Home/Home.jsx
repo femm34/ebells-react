@@ -4,6 +4,7 @@ import Navbars from "../Navbar/Navbars";
 import NavbarSocialMedia from "../NavbarSocialMedia/NavbarSocialMedia";
 import Introduction from "../Introduction/Introduction";
 import MainHome from "../MainHome/MainHome";
+import FloatingWhatsappButton from "../FloatingWhatsappButton/FloatingWhatsappButton";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Navbars />
       <MainHome />
       <Introduction />
+      <FloatingWhatsappButton />
     </div>
   );
 }

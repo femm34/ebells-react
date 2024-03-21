@@ -27,19 +27,19 @@ export default function UploadPortfolio() {
     image: "",
   });
 
-  const handleChange = (e) => {
+  const handleFormServicesChange = (e) => {
     if (e.target.name === "image") {
       setPortfolioData({
         ...portfolioData,
         image: e.target.files[0],
-        imageUrl: URL.createObjectURL(e.target.files[0]), // Almacena una URL temporal para mostrar la imagen previa
+        imageUrl: URL.createObjectURL(e.target.files[0]),
       });
     } else {
       setPortfolioData({ ...portfolioData, [e.target.name]: e.target.value });
     }
     console.log(portfolioData);
   };
-  const sendPortfolioData = async () => {
+  const sendServicesData = async () => {
     try {
       const formData = new FormData();
       formData.append("image", portfolioData.image);
@@ -107,6 +107,7 @@ export default function UploadPortfolio() {
             isOpen={isOpen}
             onOpenChange={onOpenChange}
             placement="top-center"
+            scrollBehavior={"outside"}
           >
             <ModalContent>
               {(onClose) => (
@@ -126,7 +127,7 @@ export default function UploadPortfolio() {
                         <div className="mt-2">
                           <input
                             name="work_name"
-                            onChange={handleChange}
+                            onChange={handleFormServicesChange}
                             type="text"
                             id="work_name"
                             autoComplete="family-name"
@@ -165,7 +166,7 @@ export default function UploadPortfolio() {
                             >
                               <span>Carga un archivo</span>
                               <input
-                                onChange={handleChange}
+                                onChange={handleFormServicesChange}
                                 id="file-upload"
                                 name="image"
                                 type="file"
@@ -185,7 +186,7 @@ export default function UploadPortfolio() {
                     <Button color="danger" variant="flat" onPress={onClose}>
                       Close
                     </Button>
-                    <Button color="default" onPress={sendPortfolioData}>
+                    <Button color="default" onPress={sendServicesData}>
                       Guardar
                     </Button>
                   </ModalFooter>

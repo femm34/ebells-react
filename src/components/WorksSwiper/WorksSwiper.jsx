@@ -1,80 +1,93 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
+import "swiper/css/autoplay";
 import "swiper/css/navigation";
-
-import { EffectCoverflow, Pagination, Navigation } from "swiper";
-
-import slide_image_1 from "./assets/images/img_1.jpg";
-import slide_image_2 from "./assets/images/img_2.jpg";
-import slide_image_3 from "./assets/images/img_3.jpg";
-import slide_image_4 from "./assets/images/img_4.jpg";
-import slide_image_5 from "./assets/images/img_5.jpg";
-import slide_image_6 from "./assets/images/img_6.jpg";
-import slide_image_7 from "./assets/images/img_7.jpg";
+import {
+  EffectCoverflow,
+  EffectCube,
+  Pagination,
+  Parallax,
+  EffectCards,
+  Navigation,
+  Keyboard,
+} from "swiper/modules";
+import CardServices from "../CardServices/CardServices";
+import serviceService from "../../api/services/servicesService";
+import "./WorksSwiper.css";
 
 function WorksSwiper() {
-  return (
-    <div className="container">
-      <h1 className="heading">Flower Gallery</h1>
-      <Swiper
-        effect={"coverflow"}
-        grabCursor={true}
-        centeredSlides={true}
-        loop={true}
-        slidesPerView={"auto"}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 100,
-          modifier: 2.5,
-        }}
-        pagination={{ el: ".swiper-pagination", clickable: true }}
-        navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-          clickable: true,
-        }}
-        modules={[EffectCoverflow, Pagination, Navigation]}
-        className="swiper_container"
-      >
-        <SwiperSlide>
-          <img src={slide_image_1} alt="slide_image" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={slide_image_2} alt="slide_image" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={slide_image_3} alt="slide_image" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={slide_image_4} alt="slide_image" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={slide_image_5} alt="slide_image" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={slide_image_6} alt="slide_image" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={slide_image_7} alt="slide_image" />
-        </SwiperSlide>
+  return <></>;
+  // const [allServices, setAllServices] = useState([]);
 
-        <div className="slider-controler">
-          <div className="swiper-button-prev slider-arrow">
-            <ion-icon name="arrow-back-outline"></ion-icon>
-          </div>
-          <div className="swiper-button-next slider-arrow">
-            <ion-icon name="arrow-forward-outline"></ion-icon>
-          </div>
-          <div className="swiper-pagination"></div>
-        </div>
-      </Swiper>
-    </div>
-  );
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const services = await serviceService.getServices();
+  //       setAllServices(services.data);
+  //     } catch (error) {
+  //       console.error("Error fetching services:", error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+  // const allSlides = allServices.map((service) => (
+  //   <SwiperSlide key={service.id}>
+  //     <CardServices
+  //       service_image_url={service.service_image_url}
+  //       service_name={service.service_name}
+  //       service_description={service.service_description}
+  //     />
+  //   </SwiperSlide>
+  // ));
+
+  // return (
+  //   <>
+  //     <h1 className="heading">Nuestros Servicios</h1>
+  //     <div className="container-general-swiper">
+  //       <div className="container-swiper">
+  //         <Swiper
+  //           spaceBetween={-230}
+  //           slidesPerView={"auto"}
+  //           centeredSlides={true}
+  //           keyboard={{
+  //             enabled: true,
+  //           }}
+  //           loop={true}
+  //           pagination={{
+  //             el: ".swiper-pagination",
+  //             clickable: true,
+  //             dynamicBullets: true,
+  //           }}
+  //           navigation={{
+  //             nextEl: ".swiper-button-next",
+  //             prevEl: ".swiper-button-prev",
+  //             clickable: true,
+  //           }}
+  //           modules={[Parallax, Pagination, Keyboard, Navigation, EffectCards]}
+  //           className="swiper_container"
+  //         >
+  //           {allSlides}
+  //         </Swiper>
+  //       </div>
+  //       <div className="container-swiper-nav">
+  //         <div className="slider-controler">
+  //           <div className="swiper-button-prev slider-arrow">
+  //             <ion-icon name="arrow-back-outline"></ion-icon>
+  //           </div>
+  //           <div className="swiper-button-next slider-arrow">
+  //             <ion-icon name="arrow-forward-outline"></ion-icon>
+  //           </div>
+  //           <div className="swiper-pagination"></div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </>
+  // );
 }
 
 export default WorksSwiper;

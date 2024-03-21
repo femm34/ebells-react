@@ -7,6 +7,9 @@ import Home from "./components/Home/Home.jsx";
 import Login from "./components/Login/Login.jsx";
 import NavbarEcommerce from "./components/NavbarEcommerce/NavbarEcommerce.jsx";
 import Register from "./components/Register/Register.jsx";
+import WorksSwiper from "./components/WorksSwiper/WorksSwiper.jsx";
+import ServicesCarrousel from "./components/ServicesCarrousel/ServicesCarrousel.jsx";
+import Map from "./components/Map/Map.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -26,12 +29,20 @@ const router = createBrowserRouter([
     path: "/control-panel",
     element: <ControlPanel />,
   },
+  {
+    path: "/services",
+    element: <ServicesCarrousel />,
+  },
+  {
+    path: "/map",
+    element: <Map address={"lopez mateos"} />,
+  },
 ]);
 
 function App() {
   return (
     <>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </>
   );
 }

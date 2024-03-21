@@ -1,26 +1,26 @@
-.upload-portfolio-text {
+.upload-service-text {
   font-weight: 300;
   display: inline-block !important;
 }
 
-.upload-portfolio {
+.upload-service {
   margin-bottom: 10px;
   width: 100%;
   max-width: 600px;
 }
 
-.upload-portfolio-title {
+.upload-service-title {
   font-weight: 500 !important;
   /* font-family: var(--roboto-font) !important; */
 }
 
-.upload-portfolio-card {
+.upload-service-card {
   align-items: center;
   justify-content: space-between;
   display: flex;
   flex-direction: row;
 }
 
-.upload-portfolio-button {
+.upload-service-button {
   background-color: aqua !;
 }

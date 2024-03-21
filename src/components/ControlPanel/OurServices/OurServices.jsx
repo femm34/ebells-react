@@ -1,17 +1,12 @@
 import { PhotoIcon } from "@heroicons/react/24/solid";
-import "./OurServices.css";
-import { AddNoteIcon } from "./AddNoteIcon.jsx";
-import { CopyDocumentIcon } from "./CopyDocumentIcon.jsx";
-import portfolioService from "../../../api/portfolio/portfolioService.js";
 import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
-  cn,
+  Button,
   Card,
   CardBody,
-  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
   Modal,
   ModalBody,
   ModalContent,
@@ -20,32 +15,40 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import React, { useState } from "react";
+import serviceService from "../../../api/services/servicesService.js";
+import { AddNoteIcon } from "./AddNoteIcon.jsx";
+import { CopyDocumentIcon } from "./CopyDocumentIcon.jsx";
+import "./OurServices.css";
 
-export default function UploadPortfolio() {
-  const [portfolioData, setPortfolioData] = useState({
-    work_name: "",
+export default function OurServices() {
+  const [serviceData, setServiceData] = useState({
+    service_name: "",
+    service_description: "",
     image: "",
   });
 
   const handleChange = (e) => {
     if (e.target.name === "image") {
-      setPortfolioData({
-        ...portfolioData,
+      setServiceData({
+        ...serviceData,
         image: e.target.files[0],
-        imageUrl: URL.createObjectURL(e.target.files[0]), // Almacena una URL temporal para mostrar la imagen previa
+        imageUrl: URL.createObjectURL(e.target.files[0]),
       });
     } else {
-      setPortfolioData({ ...portfolioData, [e.target.name]: e.target.value });
+      setServiceData({ ...serviceData, [e.target.name]: e.target.value });
     }
-    console.log(portfolioData);
+    console.log(serviceData);
   };
-  const sendPortfolioData = async () => {
+  const sendServiceData = async () => {
     try {
       const formData = new FormData();
-      formData.append("image", portfolioData.image);
-      formData.append("work_name", portfolioData.work_name);
-      const uploadResponse = await portfolioService.createPortfolio(formData);
-      console.log(uploadResponse);
+      formData.append("image", serviceData.image);
+      formData.append("service_name", serviceData.service_name);
+      formData.append("service_description", serviceData.service_description);
+      for (let [key, val] of formData.entries()) {
+        alert(`${key}: ${val}`);
+      }
+      const uploadResponse = await serviceService.createService(formData);
       return;
     } catch (error) {
       if (error.response) {
@@ -63,12 +66,12 @@ export default function UploadPortfolio() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
-    <div className="upload-portfolio">
+    <div className="upload-service">
       <Card>
         <CardBody>
-          <h1 className="upload-portfolio-title">Servicios</h1>
-          <div className="upload-portfolio-card">
-            <p className="upload-portfolio-text">
+          <h1 className="upload-service-title">Servicios</h1>
+          <div className="upload-service-card">
+            <p className="upload-service-text">
               Administra los servicios de tu negocio
             </p>
 
@@ -107,6 +110,7 @@ export default function UploadPortfolio() {
             isOpen={isOpen}
             onOpenChange={onOpenChange}
             placement="top-center"
+            scrollBehavior={"outside"}
           >
             <ModalContent>
               {(onClose) => (
@@ -162,12 +166,8 @@ export default function UploadPortfolio() {
                       </label>
                       <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                         <div className="text-center">
-                          {portfolioData.imageUrl != "" ? (
-                            <img
-                              src={portfolioData.imageUrl}
-                              alt=""
-                              srcSet=""
-                            />
+                          {serviceData.imageUrl != "" ? (
+                            <img src={serviceData.imageUrl} alt="" srcSet="" />
                           ) : (
                             <PhotoIcon
                               className="mx-auto h-12 w-12 text-gray-300"
@@ -202,7 +202,7 @@ export default function UploadPortfolio() {
                     <Button color="danger" variant="flat" onPress={onClose}>
                       Close
                     </Button>
-                    <Button color="default" onPress={sendPortfolioData}>
+                    <Button color="default" onPress={sendServiceData}>
                       Guardar
                     </Button>
                   </ModalFooter>

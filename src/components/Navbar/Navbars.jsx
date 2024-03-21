@@ -12,8 +12,6 @@ import {
   NavbarMenuToggle,
 } from "@nextui-org/react";
 
-// import "./Navbar.Styled.css";
-
 export default function Navbars() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -57,7 +55,7 @@ export default function Navbars() {
         </NavbarItem>
 
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <Link color="foreground" href="#services">
             Servicios
           </Link>
         </NavbarItem>
