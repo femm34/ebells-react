@@ -4,6 +4,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import ServicesCarrousel from "../ServicesCarrousel/ServicesCarrousel";
 import "./Introduction.Styled.css";
 import Map from "../Map/Map";
+import WorksCarrousel from "../WorksCarrousel/WorksCarrousel";
 
 const images = [
   {
@@ -62,8 +63,18 @@ export default function Introduction() {
       </div>
 
       <div className="mission-container">
-        <div className="mission-container-map">
-          <Map />
+        <div className="mission-container-image">
+          <img
+            src="/src/assets/images/slider/sliderOne.png"
+            className="mission-container-image"
+            alt=""
+          />
+          <img
+            src="/src/assets/images/slider/sliderOne.png"
+            className="mission-container-image"
+            alt=""
+          />
+          {/* <Map /> */}
         </div>
         <div className="mission-container-body">
           <div className="mission-container-title">
@@ -85,7 +96,11 @@ export default function Introduction() {
         </div>
       </div>
 
-      <div className="works-done"></div>
+      <div className="works-done">
+        <WorksCarrousel />
+      </div>
+
+      <div className="contact"></div>
     </div>
   );
 }

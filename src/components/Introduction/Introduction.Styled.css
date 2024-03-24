@@ -70,8 +70,14 @@
   width: 60%;
 }
 
-.mission-container-map {
-  padding: 40px;
+.mission-container-image {
+  display: flex;
+  padding: 0;
+}
+
+.mission-container-image img {
+  width: 50%;
+  height: 100%;
 }
 
 .mission-container-title {
@@ -110,4 +116,9 @@
   display: flex;
   justify-content: flex-start;
   width: 500px;
+}
+
+.works-done {
+  display: flex;
+  justify-content: center;
 }

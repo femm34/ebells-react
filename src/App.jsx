@@ -10,6 +10,8 @@ import Register from "./components/Register/Register.jsx";
 import WorksSwiper from "./components/WorksSwiper/WorksSwiper.jsx";
 import ServicesCarrousel from "./components/ServicesCarrousel/ServicesCarrousel.jsx";
 import Map from "./components/Map/Map.jsx";
+import QuotationForm from "./components/QuotationForm/QuotationForm.jsx";
+import Contact from "./components/Contact/Contact.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -36,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: "/map",
     element: <Map address={"lopez mateos"} />,
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
   },
 ]);
 

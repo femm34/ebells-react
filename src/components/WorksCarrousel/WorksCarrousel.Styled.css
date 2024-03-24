@@ -1,0 +1,12 @@
+.react-image-galley-main-container {
+  padding-top: 40px;
+  width: 700px !important;
+}
+
+.react-image-galley-main-container-title h1 {
+  padding-bottom: 20px;
+  color: #260B01;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+}
