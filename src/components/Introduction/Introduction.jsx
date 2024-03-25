@@ -5,6 +5,7 @@ import ServicesCarrousel from "../ServicesCarrousel/ServicesCarrousel";
 import "./Introduction.Styled.css";
 import Map from "../Map/Map";
 import WorksCarrousel from "../WorksCarrousel/WorksCarrousel";
+import Contact from "../Contact/Contact";
 
 const images = [
   {
@@ -99,8 +100,13 @@ export default function Introduction() {
       <div className="works-done">
         <WorksCarrousel />
       </div>
+      {/* <div className="separator"></div> */}
 
-      <div className="contact"></div>
+      <div className="contact">
+        <Contact />
+      </div>
+
+      <div className="footer"></div>
     </div>
   );
 }

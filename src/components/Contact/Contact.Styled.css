@@ -3,5 +3,40 @@
 }
 
 .contact-quotation {
+  margin-left: 30px;
   width: 100%;
+}
+
+.fa-phone {
+  display: inline;
+  color: #260B01 !important;
+}
+
+.contact-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contact-number {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.contact-numbers h3 {
+  margin-left: 0.5rem;
+  /* margin: 1rem 0;
+  font-size: 1.1rem;
+  font-weight: 700; */
+
+}
+
+.contact-numbers h2 {
+  padding: 0.3rem 0.5rem;
+  background-color: #260B01 !important;
+  color: #f1f1f1;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  font-weight: 700;
 }

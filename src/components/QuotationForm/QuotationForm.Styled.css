@@ -1,3 +1,9 @@
 .quotation-form {
-  width: 40%;
+  width: 100%;
+}
+
+.quotation-form-title {
+  color: #260B01;
+  font-size: 1.6rem;
+  font-weight: 900;
 }
